@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class Slurm : Singleton<Slurm>
     public float accFactor;
     public float dampingFactor;
 
+    [HideInInspector][NonSerialized] public int maxDepth;
     SlurmPoint root;
     List<SlurmPoint> slurmBreadthTraversal; //breadth traversal of the tree starting from [root]
     void Start()
@@ -19,7 +21,7 @@ public class Slurm : Singleton<Slurm>
         ConstructBreadthTraversal();
         ResetOutputPosition();
         foreach(SlurmPoint p in slurmBreadthTraversal) {
-            //p.output.SetParent(slurmBreadthTraversal[0].output.parent);
+            p.output.SetParent(slurmBreadthTraversal[0].output.parent);
         }
     }
 
@@ -27,12 +29,15 @@ public class Slurm : Singleton<Slurm>
     {
         UpdateSlurm();
     }
+    public float GetAccFactorByDepth(int depth) {
+        return (float)(maxDepth-depth)/maxDepth;
+    }
     void ConstructTree() {
         List<Transform> processedObjects=new List<Transform>();
         slurmBreadthTraversal=new List<SlurmPoint>();
 
-        root=new SlurmPoint(null, target, output);
-        ConstructTreeRecursive(root, target, output);
+        root=new SlurmPoint(null, target, output, 0);
+        ConstructTreeRecursive(root, target, output, 1);
     }
     void ConstructBreadthTraversal() {
         slurmBreadthTraversal=new List<SlurmPoint>();
@@ -52,17 +57,19 @@ public class Slurm : Singleton<Slurm>
             p.output.position=p.target.position;
         }
     }
-    void ConstructTreeRecursive(SlurmPoint parentPoint, Transform targetTransform, Transform outputTransform) {
+    void ConstructTreeRecursive(SlurmPoint parentPoint, Transform targetTransform, Transform outputTransform, int depth) {
+        maxDepth=Mathf.Max(maxDepth, depth);
         for(int i = 0; i < targetTransform.childCount; ++i) {
             Transform targetTransformChild=targetTransform.GetChild(i);
             Transform outputTransformChild=outputTransform.GetChild(i);
-            SlurmPoint point=new SlurmPoint(parentPoint, targetTransformChild, outputTransformChild);
+            SlurmPoint point=new SlurmPoint(parentPoint, targetTransformChild, outputTransformChild, depth);
             parentPoint.children.Add(point);
-            ConstructTreeRecursive(point, targetTransformChild, outputTransformChild);
+            ConstructTreeRecursive(point, targetTransformChild, outputTransformChild, depth+1);
         }
     }
     void UpdateSlurm() {
         float deltaTimeSqrd=Time.fixedDeltaTime*Time.fixedDeltaTime;
+        // 1: each slurmpoint update individually
         foreach(SlurmPoint p in slurmBreadthTraversal) {
             p.Update(deltaTimeSqrd);
         }

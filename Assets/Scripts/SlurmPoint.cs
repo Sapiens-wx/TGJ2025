@@ -9,16 +9,23 @@ public class SlurmPoint
     public List<SlurmPoint> children;
     public Transform target;
     public Transform output;
+    int depth;
 
     float length;
     Vector3 prevX;
+    Vector3 x;
     Vector3 acc;
 
-    public SlurmPoint(SlurmPoint parent, Transform target, Transform output) {
+    public Vector3 PrevX{get=>prevX;}
+    public Vector3 X{get=>x;}
+
+    public SlurmPoint(SlurmPoint parent, Transform target, Transform output, int depth) {
         this.parent=parent;
         this.target=target;
         this.output=output;
+        this.depth=depth;
         prevX=target.position;
+        x=prevX;
         acc=Vector3.zero;
         if(parent==null)
             length=0;
@@ -28,16 +35,24 @@ public class SlurmPoint
     }
     public void Update(float deltaTimeSqrd) {
         // verlet integration
-        Vector3 x=output.position;
-        output.position+=(x-prevX)*Slurm.inst.dampingFactor+acc*deltaTimeSqrd;
-        prevX=x;
+        Vector3 oldX=x;
+        x+=(x-prevX)*Slurm.inst.dampingFactor+acc*deltaTimeSqrd;
+        prevX=oldX;
         // add force
-        acc=target.position-output.position;
-        acc*=Slurm.inst.accFactor;
+        acc=target.position-x;
+        acc*=Slurm.inst.accFactor*Slurm.inst.GetAccFactorByDepth(depth);
         // constraints
         if (parent != null) {
-            Vector3 dir=(output.position-parent.output.position).normalized;
+            Vector3 dir=(x-parent.x).normalized;
+            x=parent.X+dir*length;
+        }
+        output.position=x;
+        return;
+        if (parent != null) {
+            Vector3 dir=(x-parent.output.position).normalized;
             output.position=parent.output.position+dir*length;
+        } else {
+            output.position=x;
         }
     }
 }
