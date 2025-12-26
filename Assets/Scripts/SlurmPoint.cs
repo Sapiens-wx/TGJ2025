@@ -16,8 +16,6 @@ public class SlurmPoint
     Vector3 prevX;
     Vector3 x;
     Vector3 acc;
-    Vector3 childDirection;
-    Quaternion defaultRotation;
 
     public Vector3 PrevX{get=>prevX;}
     public Vector3 X{get=>x;}
@@ -35,11 +33,6 @@ public class SlurmPoint
         else
             length=Vector3.Distance(parent.target.position, target.position);
         children=new List<SlurmPoint>();
-    }
-    public void SetChildDirection() {
-        SlurmPoint child=children[0];
-        childDirection=child.target.localPosition.normalized;
-        defaultRotation=target.localRotation;
     }
     public void Update(float deltaTimeSqrd) {
         // verlet integration

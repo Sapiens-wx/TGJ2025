@@ -67,7 +67,6 @@ public class Slurm : Singleton<Slurm>
             SlurmPoint point=new SlurmPoint(parentPoint, targetTransformChild, outputTransformChild, depth);
             parentPoint.children.Add(point);
             ConstructTreeRecursive(point, targetTransformChild, outputTransformChild, depth+1);
-            parentPoint.SetChildDirection();
         }
     }
     void UpdateSlurm() {
