@@ -11,6 +11,8 @@ public class Slurm : Singleton<Slurm>
     [Header("Config")]
     public float accFactor;
     public float dampingFactor;
+    public AnimationCurve accDampByDepthCurve;
+    public float errorLerpFactor;
 
     [HideInInspector][NonSerialized] public int maxDepth;
     SlurmPoint root;
@@ -21,7 +23,7 @@ public class Slurm : Singleton<Slurm>
         ConstructBreadthTraversal();
         ResetOutputPosition();
         foreach(SlurmPoint p in slurmBreadthTraversal) {
-            p.output.SetParent(slurmBreadthTraversal[0].output.parent);
+            //p.output.SetParent(slurmBreadthTraversal[0].output.parent);
         }
     }
 
@@ -30,7 +32,7 @@ public class Slurm : Singleton<Slurm>
         UpdateSlurm();
     }
     public float GetAccFactorByDepth(int depth) {
-        return (float)(maxDepth-depth)/maxDepth;
+        return accDampByDepthCurve.Evaluate((float)depth/maxDepth);
     }
     void ConstructTree() {
         List<Transform> processedObjects=new List<Transform>();
@@ -65,6 +67,7 @@ public class Slurm : Singleton<Slurm>
             SlurmPoint point=new SlurmPoint(parentPoint, targetTransformChild, outputTransformChild, depth);
             parentPoint.children.Add(point);
             ConstructTreeRecursive(point, targetTransformChild, outputTransformChild, depth+1);
+            parentPoint.SetChildDirection();
         }
     }
     void UpdateSlurm() {
@@ -72,6 +75,10 @@ public class Slurm : Singleton<Slurm>
         // 1: each slurmpoint update individually
         foreach(SlurmPoint p in slurmBreadthTraversal) {
             p.Update(deltaTimeSqrd);
+        }
+
+        foreach(SlurmPoint p in slurmBreadthTraversal) {
+            p.UpdateOutput();
         }
     }
 }
