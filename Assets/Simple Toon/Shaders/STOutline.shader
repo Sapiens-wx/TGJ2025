@@ -103,6 +103,7 @@ Shader "Simple Toon/SToon Outline"
 				float FdotV = dot(forward, -view_dir);
 
                 fixed atten = SHADOW_ATTENUATION(i);
+                atten=1;
                 float toon = Toon(NdotL, atten);
 
 				fixed4 shadecol = _DarkColor;
