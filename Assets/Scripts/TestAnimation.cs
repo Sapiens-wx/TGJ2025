@@ -13,9 +13,11 @@ public class TestAnimation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.Play(0, 0, 0f);
-        }
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+            animator.SetTrigger("action1");
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+            animator.SetTrigger("action2");
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+            animator.SetTrigger("action3");
     }
 }
