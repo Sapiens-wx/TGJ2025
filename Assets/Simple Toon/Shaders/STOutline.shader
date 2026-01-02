@@ -22,6 +22,8 @@ Shader "Simple Toon/SToon Outline"
         _MinLight ("Min Light", Range(0,1)) = 0
         _MaxLight ("Max Light", Range(0,1)) = 1
         _Lumin ("Luminocity", Range(0,2)) = 0
+        _MyLightDirFactor("LightDir Factor", Range(0,1)) = 0
+        _MyLightDir("LightDir", Vector) = (0,0,0,0)
 
 		[Header(Outline)][Space(5)]  //outline
 		_OtlColor ("Color", COLOR) = (0,0,0,1)
@@ -53,6 +55,9 @@ Shader "Simple Toon/SToon Outline"
             #include "UnityLightingCommon.cginc"
             #include "AutoLight.cginc"
             #include "STCore.cginc"
+
+            float _MyLightDirFactor;
+            float4 _MyLightDir;
 
             struct appdata
             {
@@ -93,6 +98,7 @@ Shader "Simple Toon/SToon Outline"
 
 				float3 normal = normalize(i.worldNormal);
 				float3 light_dir = normalize(_WorldSpaceLightPos0.xyz);
+                light_dir=lerp(light_dir, normalize(_MyLightDir.xyz), _MyLightDirFactor);
 				float3 view_dir = normalize(i.viewDir);
 				float3 halfVec = normalize(light_dir + view_dir);
 				float3 forward = mul((float3x3)unity_CameraToWorld, float3(0,0,1));
