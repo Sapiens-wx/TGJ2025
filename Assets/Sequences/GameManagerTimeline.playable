@@ -368,23 +368,6 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: bfee608ce5faa9e4394beba0e45db4b9, type: 2}
---- !u!114 &-6625615740547688968
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
-  m_Name: AudioPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: 505af2d9bd6e9924a95b2c034cdfdcbc, type: 3}
-  m_Loop: 0
-  m_bufferingTime: 0.1
-  m_ClipProperties:
-    volume: 1
 --- !u!114 &-6596263832931518067
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -705,6 +688,23 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 53f02b8cf4d00184b90d3751faf320ca, type: 2}
+--- !u!114 &-4254905837001213704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 8300000, guid: d6eb55d1cc7e6dc47960036cfcd8f771, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 1
 --- !u!114 &-4241064105431682415
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1844,8 +1844,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -6625615740547688968}
-    m_Duration: 124.65816326530613
+    m_Asset: {fileID: -4254905837001213704}
+    m_Duration: 138.68408163265306
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3185975678677720456}
     m_EaseInDuration: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Markers:
     m_Objects: []
   m_TrackProperties:
-    volume: 0.18367213
+    volume: 1
     stereoPan: 0
     spatialBlend: 0
 --- !u!114 &3251444394288258543

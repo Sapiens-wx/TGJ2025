@@ -4,26 +4,42 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
+    public bool withTutorial;
     public Animator playerAnimator, aiAnimator;
     public float[] playerDelay; //base delay: 5 sec
     public float[] aiDelay; //base delay: 5 sec
     // the action requests 1-3
     public PlayableDirector[] actions;
     public CinemachineVirtualCamera[] cams;
+
+    PlayableDirector gamePlayDirector;
+    protected override void Awake()
+    {
+        base.Awake();
+        gamePlayDirector=GetComponent<PlayableDirector>();
+    }
+    void Start()
+    {
+        if(!withTutorial)
+            StartActualGame();
+    }
+    public void StartActualGame() {
+        gamePlayDirector.Play();
+    }
     public void DelayPlayCue(int index) {
         StartCoroutine(DelayAction(PlayCue, index, aiDelay[index]));
     }
     public void DelayPlayAction(int index) {
         StartCoroutine(DelayAction(PlayAction, index, playerDelay[index]));
     }
-    void PlayCue(int index) {
+    public void PlayCue(int index) {
         Debug.Log("Cue "+index.ToString());
         aiAnimator.SetTrigger($"action{index+1}_ai");
         SetCam(index);
     }
-    void PlayAction(int index) {
+    public void PlayAction(int index) {
         Debug.Log("Action "+index.ToString());
         actions[index].Play();
     }
