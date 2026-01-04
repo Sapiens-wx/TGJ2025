@@ -7,10 +7,10 @@ using UnityEngine.Playables;
 public class Tutorial : Singleton<Tutorial>
 {
     public PlayableDirector[] actions;
-    public string[] pre_action1_dialogue;
-    public string[] pre_action2_dialogue;
-    public string[] pre_action3_dialogue;
-    public string[] post_action3_dialogue;
+    public DialogueInfo[] pre_action1_dialogue;
+    public DialogueInfo[] pre_action2_dialogue;
+    public DialogueInfo[] pre_action3_dialogue;
+    public DialogueInfo[] post_action3_dialogue;
     public GameObject tutorialBG;
 
     [HideInInspector][NonSerialized] public ActionState actionState;
@@ -29,16 +29,16 @@ public class Tutorial : Singleton<Tutorial>
     }
     IEnumerator TutorialCoro() {
         IEnumerator routine;
-        List<string[]> dialogues=new List<string[]>() {
+        List<DialogueInfo[]> dialogues=new List<DialogueInfo[]>() {
             pre_action1_dialogue,
             pre_action2_dialogue,
             pre_action3_dialogue
         };
         for(int i=0;i<dialogues.Count;++i) {
             DialogueTyper.inst.SetDiaplay(true);
-            string[] dialogue=dialogues[i];
+            DialogueInfo[] dialogue=dialogues[i];
             // dialogue
-            foreach(string s in dialogue)
+            foreach(DialogueInfo s in dialogue)
             {
                 routine=DialogueTyper.inst.TypeRoutine(s);
                 while(routine.MoveNext())
@@ -62,9 +62,11 @@ public class Tutorial : Singleton<Tutorial>
                 if (actionState == ActionState.Fail)
                 {
                     actions[i].Stop();
+                    DialogueTyper.inst.SetDiaplay(true);
                     routine=DialogueTyper.inst.TypeRoutine("let's try again!");
                     while(routine.MoveNext())
                         yield return routine.Current;
+                    DialogueTyper.inst.SetDiaplay(false);
                 } else
                     break;
             } while(true);
@@ -72,7 +74,7 @@ public class Tutorial : Singleton<Tutorial>
         }
         // dialogue before starting the game
         DialogueTyper.inst.SetDiaplay(true);
-        foreach(string s in post_action3_dialogue)
+        foreach(DialogueInfo s in post_action3_dialogue)
         {
             routine=DialogueTyper.inst.TypeRoutine(s);
             while(routine.MoveNext())
