@@ -19,8 +19,10 @@ public class Tutorial : Singleton<Tutorial>
         if (GameManager.inst.withTutorial) {
             tutorialBG.SetActive(true);
             StartCoroutine(TutorialCoro());
-        } else
+        } else {
             tutorialBG.SetActive(false);
+            DialogueTyper.inst.SetDiaplay(false);
+        }
     }
     public void SetActionRequestSuccess()
     {

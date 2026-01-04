@@ -35,12 +35,10 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(DelayAction(PlayAction, index, playerDelay[index]));
     }
     public void PlayCue(int index) {
-        Debug.Log("Cue "+index.ToString());
         aiAnimator.SetTrigger($"action{index+1}_ai");
         SetCam(index);
     }
     public void PlayAction(int index) {
-        Debug.Log("Action "+index.ToString());
         actions[index].Play();
     }
     public void PlayPlayerAnimation(int index) {

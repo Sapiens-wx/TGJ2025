@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUpDistance: 2
-  moveDuration: 0.5
+  moveDuration: 0.25
   rotateAngle: 5

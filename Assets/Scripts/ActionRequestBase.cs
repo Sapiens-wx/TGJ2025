@@ -22,13 +22,11 @@ public abstract class ActionRequestBase : MonoBehaviour
     protected virtual void OnSuccess() {
         if(actionState==ActionState.Successful) return;
         actionState=ActionState.Successful;
-        Debug.Log($"{GetType().Name} Succeeded");
     }
     protected virtual void OnFailed() {
         if(actionState==ActionState.Failed) return;
         actionState=ActionState.Failed;
         GameManager.inst.playerAnimator.SetTrigger("fail");
-        Debug.Log($"{GetType().Name} Failed");
     }
     protected void OnActionPerformed() {
         if(actionState==ActionState.Failed) return;
