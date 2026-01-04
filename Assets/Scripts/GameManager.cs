@@ -13,6 +13,10 @@ public class GameManager : Singleton<GameManager>
     // the action requests 1-3
     public PlayableDirector[] actions;
     public CinemachineVirtualCamera[] cams;
+    [Header("Key Binds")]
+    public KeyCode action1_key;
+    public KeyCode action2_key;
+    public KeyCode action3_key;
 
     PlayableDirector gamePlayDirector;
     protected override void Awake()
@@ -25,6 +29,17 @@ public class GameManager : Singleton<GameManager>
         if(!withTutorial)
             StartActualGame();
     }
+    void Update() {
+        if(ActionRequestBase.activeActionRequest==null && TutorialActionRequest.activeActionRequest == null) {
+            if(Input.GetKeyDown(action1_key))
+                playerAnimator.SetTrigger("action1");
+            else if (Input.GetKeyDown(action2_key)) {
+                playerAnimator.SetTrigger("action2_1");
+            } else if (Input.GetKeyDown(action3_key)) {
+                playerAnimator.SetTrigger("action3");
+            }
+        }
+    }
     public void StartActualGame() {
         gamePlayDirector.Play();
     }
@@ -36,7 +51,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void PlayCue(int index) {
         aiAnimator.SetTrigger($"action{index+1}_ai");
-        SetCam(index);
+        if(index!=1)
+            SetCam(index);
     }
     public void PlayAction(int index) {
         actions[index].Play();
@@ -44,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     public void PlayPlayerAnimation(int index) {
         playerAnimator.SetTrigger($"action{index+1}");
     }
-    void SetCam(int index)
+    public void SetCam(int index)
     {
         for(int i = 0; i < cams.Length; ++i) {
             cams[i].Priority=1;

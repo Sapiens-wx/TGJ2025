@@ -13,6 +13,7 @@ public abstract class ActionRequestBase : MonoBehaviour
     ActionState actionState;
     bool requestActive=false;
     protected int curActionCount;
+    public static ActionRequestBase activeActionRequest;
     void Awake()
     {
         curActionCount=0;
@@ -21,11 +22,13 @@ public abstract class ActionRequestBase : MonoBehaviour
         if(curActionCount>=actionCount) curActionCount=0;
         actionState=ActionState.None;
         requestActive=false;
+        activeActionRequest=this;
     }
     void OnDisable() {
         if (actionState != ActionState.Successful) {
             OnFailed();
         }
+        activeActionRequest=null;
     }
     protected virtual void OnSuccess() {
         if(actionState==ActionState.Successful) return;
@@ -37,6 +40,7 @@ public abstract class ActionRequestBase : MonoBehaviour
         actionState=ActionState.Failed;
         GameManager.inst.playerAnimator.SetTrigger("fail");
         failAudio.Play();
+        curActionCount=0;
     }
     protected void OnActionPerformed() {
         if(actionState==ActionState.Failed) return;

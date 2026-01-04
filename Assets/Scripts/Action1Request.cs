@@ -6,7 +6,7 @@ public class Action1Request : ActionRequestBase
     public float tipsDisplayDuration;
     public GameObject[] tips;
     void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown(GameManager.inst.action1_key)) {
             OnActionPerformed();
         }
     }

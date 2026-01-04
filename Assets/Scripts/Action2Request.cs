@@ -3,16 +3,13 @@ using UnityEngine;
 public class Action2Request : ActionRequestBase
 {
     void Update() {
-        if (Input.GetKeyDown(KeyCode.B)) {
+        if (Input.GetKeyDown(GameManager.inst.action2_key)) {
             OnActionPerformed();
         }
     }
     protected override void OnSuccess()
     {
         base.OnSuccess();
-        if (curActionCount == 1) {
-            Debug.Log("Player action2"+Time.time);
-            GameManager.inst.PlayPlayerAnimation(1);
-        }
+        GameManager.inst.playerAnimator.SetTrigger($"action2_{curActionCount}");
     }
 }
