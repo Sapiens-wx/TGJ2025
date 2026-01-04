@@ -122,98 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &3147285
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3147288}
-  - component: {fileID: 3147287}
-  - component: {fileID: 3147286}
-  m_Layer: 0
-  m_Name: default Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &3147286
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147285}
-  m_Enabled: 1
---- !u!20 &3147287
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147285}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9843137, g: 0.49803922, b: 0.5294118, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &3147288
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147285}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0.05, y: 1.25, z: -1.08}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15, y: -15, z: 0}
 --- !u!1 &12640445
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &93802275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -388,8 +296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1444, y: -300}
-  m_SizeDelta: {x: 489, y: 296}
+  m_AnchoredPosition: {x: 1444, y: -384.11023}
+  m_SizeDelta: {x: 489, y: 464.2204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93802276
 MonoBehaviour:
@@ -739,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfe7ed63218186479a4f36f2d15627c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withTutorial: 1
+  withTutorial: 0
   playerAnimator: {fileID: 1913000316}
   aiAnimator: {fileID: 1789873202}
   playerDelay:
@@ -758,6 +666,7 @@ MonoBehaviour:
   - {fileID: 2013551888}
   - {fileID: 2062878473}
   - {fileID: 1240009873}
+  - {fileID: 604605780}
 --- !u!114 &226952202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +690,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f95c2d3ffeaec6848b6a867fb8234480, type: 2}
     - {fileID: 11400000, guid: f078724562b589d4bbe60e156a7b78dd, type: 2}
     - {fileID: 11400000, guid: fd965b3fc960b3242b8e60bde490db62, type: 2}
+    - {fileID: 11400000, guid: 5426e15f54b426b43b0628db67080abe, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -908,6 +818,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1947899998}
+          m_TargetAssemblyTypeName: BeatHint, Assembly-CSharp
+          m_MethodName: Beat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!320 &226952203
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -921,7 +845,7 @@ PlayableDirector:
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
-  m_InitialTime: 0
+  m_InitialTime: 10
   m_SceneBindings:
   - key: {fileID: -1060893882388214321, guid: 6546440c5d381bd4f970e4c8d35eff9c, type: 2}
     value: {fileID: 226952202}
@@ -1145,6 +1069,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 691628534}
+  character: {fileID: 12640447}
+  introCharacter: {fileID: 907399523}
+  introBG: {fileID: 2086313247}
   typeInterval: 0.05
 --- !u!1 &252672132
 GameObject:
@@ -1178,29 +1105,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
+  - {fileID: 581407645}
   - {fileID: 658172197}
   - {fileID: 422013550}
-  - {fileID: 581407645}
   pre_action1_dialogue:
-  - press space to start tutorial 1
-  - "Okay\u2026 Let me start by shifting my attention to the reflection in the mirror."
-  - "Tapping my fingers along with the rhythm always helps\u2014it\u2019s simple,
-    and kind of fun."
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 78e4ec602367e2b48b9170001d4a8c51, type: 3}
+    text: "Today is my first day of college. Can\u2019t wait to experience this brand
+      new chapter of my life and hopefully make some new friends."
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 78e4ec602367e2b48b9170001d4a8c51, type: 3}
+    text: "I\u2019m so excited! But don\u2019t quite know what kind of people I\u2019ll
+      meet. "
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 78e4ec602367e2b48b9170001d4a8c51, type: 3}
+    text: "I hope I can behave just as usual. Umm\u2026 "
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 0dc08023b86313c49912754052f53ee1, type: 3}
+    text: "Ugh! I\u2019m starting to get a little nervous about meeting new people
+      now\u2026 "
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 0dc08023b86313c49912754052f53ee1, type: 3}
+    text: "Oh, my chest is feeling tight\u2026 "
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 4a8cb37f77774f54a950a5b4924ed583, type: 3}
+    text: 'I guess I should calm myself first. '
+  - isIntro: 1
+    spr: {fileID: 21300000, guid: 4a8cb37f77774f54a950a5b4924ed583, type: 3}
+    text: Let me do my little magical encouragement ritual spell again before I leave,
+      just like I always do when I need to feel grounded.
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0a88f7b647cffb6479a479e8da20b398, type: 3}
+    text: "Okay\u2026 Let me start by shifting my attention to the reflection in
+      the mirror."
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0a88f7b647cffb6479a479e8da20b398, type: 3}
+    text: "Tapping my fingers along with the rhythm always helps\u2014it\u2019s simple,
+      and kind of fun."
   pre_action2_dialogue:
-  - space start tutorial 2
-  - Now it's time to clap high and cheer myself up!
-  - "\u201CDon\u2019t worry!\u201D \u201CYou\u2019ve got this!\u201D\u2026"
-  - Reminding myself like this is always important.
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0dbc3cdba9c252d41a76db4c000c83a6, type: 3}
+    text: Now it's time to clap high and cheer myself up!
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0dbc3cdba9c252d41a76db4c000c83a6, type: 3}
+    text: "\u201CDon\u2019t worry!\u201D \u201CYou\u2019ve got this!\u201D\u2026"
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0dbc3cdba9c252d41a76db4c000c83a6, type: 3}
+    text: Reminding myself like this is always important.
   pre_action3_dialogue:
-  - space tutorial 3
-  - I feel much better than before now.
-  - "The nervousness isn\u2019t gone, but it doesn\u2019t feel overwhelming anymore."
-  - I guess I really should thank myself for that.
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0a88f7b647cffb6479a479e8da20b398, type: 3}
+    text: I feel much better than before now.
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0a88f7b647cffb6479a479e8da20b398, type: 3}
+    text: "The nervousness isn\u2019t gone, but it doesn\u2019t feel overwhelming
+      anymore."
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: 0a88f7b647cffb6479a479e8da20b398, type: 3}
+    text: I guess I really should thank myself for that.
   post_action3_dialogue:
-  - Phew! Glad that I still remember these 3 little magical spells that always seem
-    to work.
-  - Now let me do them just a few more times!
-  - space to start the game
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: d5db31d9af42b8f42b8efa08a43b4d25, type: 3}
+    text: Phew! Glad that I still remember these 3 little magical spells that always
+      seem to work.
+  - isIntro: 0
+    spr: {fileID: 21300000, guid: d5db31d9af42b8f42b8efa08a43b4d25, type: 3}
+    text: Now let me do them just a few more times!
   tutorialBG: {fileID: 59960582}
 --- !u!82 &252672134
 AudioSource:
@@ -2451,6 +2421,78 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6afbadd84e1bae4ea78902d9daf775a, type: 3}
+--- !u!1 &604605779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 604605781}
+  - component: {fileID: 604605780}
+  m_Layer: 0
+  m_Name: default VM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &604605780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604605779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 2
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 60
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    LensShift: {x: 0, y: 0}
+    GateFit: 2
+    FocusDistance: 10
+    m_SensorSize: {x: 1, y: 1}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 1243386507}
+--- !u!4 &604605781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604605779}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 0.05, y: 1.25, z: -1.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1243386507}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: -15, z: 0}
 --- !u!1 &657931344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,8 +2779,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 266.5381, y: -69.38672}
-  m_SizeDelta: {x: 406.1112, y: 103.1537}
+  m_AnchoredPosition: {x: 266.5381, y: -102.09619}
+  m_SizeDelta: {x: 406.1112, y: 168.5727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691628534
 MonoBehaviour:
@@ -3839,7 +3881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1126843878}
   - component: {fileID: 1126843877}
-  - component: {fileID: 1126843876}
   - component: {fileID: 1126843875}
   m_Layer: 0
   m_Name: RiseAngle Camera
@@ -3892,14 +3933,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1126843876
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126843874}
-  m_Enabled: 1
 --- !u!20 &1126843877
 Camera:
   m_ObjectHideFlags: 0
@@ -4207,6 +4240,101 @@ Transform:
   - {fileID: 2113280090}
   m_Father: {fileID: 140434770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1243386506
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243386507}
+  - component: {fileID: 1243386510}
+  - component: {fileID: 1243386509}
+  - component: {fileID: 1243386508}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243386507
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243386506}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 604605781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243386508
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243386506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+--- !u!114 &1243386509
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243386506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &1243386510
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243386506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1253962873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5385,7 +5513,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1726179989}
   - component: {fileID: 1726179988}
-  - component: {fileID: 1726179987}
   - component: {fileID: 1726179986}
   m_Layer: 0
   m_Name: HandCloseUp Camera
@@ -5438,14 +5565,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1726179987
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726179985}
-  m_Enabled: 1
 --- !u!20 &1726179988
 Camera:
   m_ObjectHideFlags: 0
@@ -6007,6 +6126,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8410258437029977915}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1947899998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6975463274502037012, guid: a6afbadd84e1bae4ea78902d9daf775a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8410258437029977915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ab15b7f17eb8c43af9a4d1f473c1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1964516314 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8025629809657537994, guid: 673515761dd813e4e8ffd3696cbea523,
@@ -7006,4 +7137,4 @@ SceneRoots:
   - {fileID: 657931348}
   - {fileID: 1986208951}
   - {fileID: 272364367}
-  - {fileID: 3147288}
+  - {fileID: 604605781}
