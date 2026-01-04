@@ -3,6 +3,7 @@ using UnityEngine;
 public class TutorialActionRequest : MonoBehaviour
 {
     public KeyCode key;
+    public AudioSource failAudio;
     ActionState actionState;
     bool requestActive=false;
     void OnEnable() {
@@ -29,6 +30,7 @@ public class TutorialActionRequest : MonoBehaviour
         actionState=ActionState.Failed;
         Tutorial.inst.actionState=Tutorial.ActionState.Fail;
         GameManager.inst.playerAnimator.SetTrigger("fail");
+        failAudio.Play();
         Debug.Log($"{GetType().Name} Failed");
     }
     protected void OnActionPerformed() {

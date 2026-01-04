@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class ActionRequestBase : MonoBehaviour
 {
     public int actionCount = 1;
+    public AudioSource failAudio;
     public enum ActionState
     {
         None,
@@ -35,6 +36,7 @@ public abstract class ActionRequestBase : MonoBehaviour
         if(actionState==ActionState.Failed) return;
         actionState=ActionState.Failed;
         GameManager.inst.playerAnimator.SetTrigger("fail");
+        failAudio.Play();
     }
     protected void OnActionPerformed() {
         if(actionState==ActionState.Failed) return;
