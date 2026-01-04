@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ab15b7f17eb8c43af9a4d1f473c1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalColor: {r: 1, g: 0.4509804, b: 0.49411765, a: 1}
+  hintColor: {r: 1, g: 0.7529412, b: 0.7647059, a: 1}
   moveUpDistance: 2
   moveDuration: 0.25
   rotateAngle: 5

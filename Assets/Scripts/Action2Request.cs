@@ -7,4 +7,12 @@ public class Action2Request : ActionRequestBase
             OnActionPerformed();
         }
     }
+    protected override void OnSuccess()
+    {
+        base.OnSuccess();
+        if (curActionCount == 1) {
+            Debug.Log("Player action2"+Time.time);
+            GameManager.inst.PlayPlayerAnimation(1);
+        }
+    }
 }

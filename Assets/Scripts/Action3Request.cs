@@ -7,4 +7,10 @@ public class Action3Request : ActionRequestBase
             OnActionPerformed();
         }
     }
+    protected override void OnSuccess()
+    {
+        base.OnSuccess();
+        if(curActionCount==1)
+            GameManager.inst.PlayPlayerAnimation(2);
+    }
 }

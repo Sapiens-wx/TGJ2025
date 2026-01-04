@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BeatHint : Singleton<BeatHint>
 {
+    public Color normalColor, hintColor;
     [Header("Move Settings")]
     public float moveUpDistance = 1f;
     public float moveDuration = 1f;
@@ -15,13 +16,18 @@ public class BeatHint : Singleton<BeatHint>
 
     bool rotateLeft = true;
     Coroutine coro;
+    SpriteRenderer spr;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        spr=GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
+        spr.color=normalColor;
         startPosition = transform.position;
         startRotation = transform.rotation;
-
-        StartCoroutine(MoveRoutine());
     }
 
     public void Beat() {
@@ -30,7 +36,7 @@ public class BeatHint : Singleton<BeatHint>
             if(coro!=null)
                 StopCoroutine(coro);
             coro=StartCoroutine(MoveRoutine());
-        }, 5f-moveDuration)); //default delay=5s
+        }, 5f-moveDuration*2)); //default delay=5s
     }
 
     public IEnumerator DelayAction(System.Action action, float delay)
@@ -41,6 +47,7 @@ public class BeatHint : Singleton<BeatHint>
 
     IEnumerator MoveRoutine()
     {
+        spr.color=normalColor;
         //direction: left / right
         float direction = rotateLeft ? -1f : 1f;
 
@@ -55,11 +62,14 @@ public class BeatHint : Singleton<BeatHint>
         // rise + rotate
         yield return MoveAndRotate(startPosition, targetPos, startRotation, targetRot);
 
+        spr.color=hintColor;
+
         // fall + rotate back
         yield return MoveAndRotate(targetPos, startPosition, targetRot, startRotation);
 
         // switch left/right
         rotateLeft = !rotateLeft;
+        spr.color=normalColor;
         coro=null;
     }
 

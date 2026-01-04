@@ -14,6 +14,7 @@ public class Action1Request : ActionRequestBase
     {
         base.OnSuccess();
         GameManager.inst.StartCoroutine(DisplayTips());
+        GameManager.inst.PlayPlayerAnimation(0);
     }
     IEnumerator DisplayTips()
     {
