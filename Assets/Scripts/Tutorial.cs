@@ -6,6 +6,11 @@ using UnityEngine.Playables;
 
 public class Tutorial : Singleton<Tutorial>
 {
+    public AudioSource audioSource;
+    public AudioClip rhythmAudio;
+    public float[] clipInTime;
+    public float[] clipDuration;
+    public GameObject button;
     public PlayableDirector[] actions;
     public DialogueInfo[] pre_action1_dialogue;
     public DialogueInfo[] pre_action2_dialogue;
@@ -14,6 +19,7 @@ public class Tutorial : Singleton<Tutorial>
     public GameObject tutorialBG;
 
     [HideInInspector][NonSerialized] public ActionState actionState;
+    int i;
     void Start()
     {
         if (GameManager.inst.withTutorial) {
@@ -36,7 +42,7 @@ public class Tutorial : Singleton<Tutorial>
             pre_action2_dialogue,
             pre_action3_dialogue
         };
-        for(int i=0;i<dialogues.Count;++i) {
+        for(i=0;i<dialogues.Count;++i) {
             DialogueTyper.inst.SetDiaplay(true);
             DialogueInfo[] dialogue=dialogues[i];
             // dialogue
@@ -58,7 +64,7 @@ public class Tutorial : Singleton<Tutorial>
             do
             {
                 actionState=ActionState.None;
-                actions[i].Play();
+                button.SetActive(true);
                 yield return new WaitUntil(()=>actionState!=ActionState.None);
                 yield return new WaitForSeconds(.7f); //wait for a second for the animation to end
                 if (actionState == ActionState.Fail)
@@ -93,6 +99,20 @@ public class Tutorial : Singleton<Tutorial>
         tutorialBG.SetActive(false);
         // start the actual game
         GameManager.inst.StartActualGame();
+    }
+    public void OnClickAction()
+    {
+        button.SetActive(false);
+        audioSource.clip=rhythmAudio;
+        audioSource.time=clipInTime[i];
+        audioSource.Play();
+        actions[i].Play();
+        DelayStopAudio(clipDuration[i]);
+    }
+    IEnumerator DelayStopAudio(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.Stop();
     }
     public enum ActionState
     {
