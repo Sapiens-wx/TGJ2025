@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    public CanvasScaler scaler;
+    public Button startGameButton;
+    public AudioSource audio1, audio2;
     public bool withTutorial;
     public Animator playerAnimator, aiAnimator;
     public float[] playerDelay; //base delay: 5 sec
@@ -28,6 +32,12 @@ public class GameManager : Singleton<GameManager>
     {
         if(!withTutorial)
             StartActualGame();
+        #if UNITY_WEBGL && !UNITY_EDITOR
+    float dpr = (float)System.Math.Round(
+        Screen.width / (float)Screen.currentResolution.width, 2);
+
+    scaler.scaleFactor /= dpr;
+#endif
     }
     void Update() {
         if(ActionRequestBase.activeActionRequest==null && TutorialActionRequest.activeActionRequest == null) {
@@ -41,6 +51,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
     public void StartActualGame() {
+        gamePlayDirector.Play();
+    }
+    public void OnClickStartGame()
+    {
+        startGameButton.gameObject.SetActive(false);
+        audio1.Play();
+        audio2.Play();
         gamePlayDirector.Play();
     }
     public void DelayPlayCue(int index) {
