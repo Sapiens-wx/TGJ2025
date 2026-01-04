@@ -58,7 +58,7 @@ public class DialogueTyper : Singleton<DialogueTyper>
         foreach (char c in content)
         {
             text.text += c;
-            if (frameCount>2&&Input.GetKey(KeyCode.Space))
+            if (frameCount>2&&Input.anyKey)
             {
                 yield return new WaitForSeconds(typeInterval);
                 break;

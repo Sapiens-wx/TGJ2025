@@ -47,7 +47,7 @@ public class Tutorial : Singleton<Tutorial>
                     yield return routine.Current;
                 while (true)
                 {
-                    if(Input.GetKeyDown(KeyCode.Space))
+                    if(Input.anyKeyDown)
                         break;
                     yield return 0;
                 }
@@ -83,7 +83,7 @@ public class Tutorial : Singleton<Tutorial>
                 yield return routine.Current;
             while (true)
             {
-                if(Input.GetKeyDown(KeyCode.Space))
+                if(Input.anyKeyDown)
                     break;
                 yield return 0;
             }
