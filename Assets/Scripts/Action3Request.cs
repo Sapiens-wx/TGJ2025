@@ -11,6 +11,8 @@ public class Action3Request : ActionRequestBase
     {
         base.OnSuccess();
         if(curActionCount==1)
-            GameManager.inst.PlayPlayerAnimation(2);
+            GameManager.inst.playerAnimator.SetTrigger($"action3_1");
+        else if(curActionCount==2)
+            GameManager.inst.playerAnimator.SetTrigger($"action3_2");
     }
 }
